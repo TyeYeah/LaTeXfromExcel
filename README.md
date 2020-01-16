@@ -26,6 +26,7 @@ readTable.py            --Utils to read  '.xls' or '.xlsx' files to my own data 
 writeTable.py           --Utils to output '.xls', '.xlsx' or '.csv' even 'LaTeX' and 'HTML' 
 
 ## Usage
+### Run Source Code
 Make sure you are using Python3+
 Install the dependencies
 ```py
@@ -35,6 +36,8 @@ Run the GUI
 ```py
 python interface.py 
 ```
+### Run Executable File
+Get executable file at [this link](https://github.com/TyeYeah/LaTeXfromExcel/releases) according to your platform.
 ## Feature
 Now I developed two modules: 
 1. File Format Conversion
