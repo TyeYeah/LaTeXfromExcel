@@ -13,7 +13,8 @@ It's developed under Python3(3.7). Tkinter, xlrd, xlwt and openpyxl are needed.
 ├── pyexcel.py              
 ├── README.md               
 ├── readTable.py            
-└── writeTable.py           
+├── writeTable.py             
+└── requirements.txt           
 
 0 directories, 5 files
 
@@ -30,7 +31,7 @@ writeTable.py           --Utils to output '.xls', '.xlsx' or '.csv' even 'LaTeX'
 Make sure you are using Python3+
 Install the dependencies
 ```py
-pip install -r requirement.txt 
+pip install -r requirements.txt 
 ```
 Run the GUI
 ```py
