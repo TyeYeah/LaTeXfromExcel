@@ -269,7 +269,7 @@ def mainwindow():
         outputwin.mainloop()
 
     window = tk.Tk()
-    window.title('LaTeXnExcel')  # set title
+    window.title('LaTeXfromExcel')  # set title
     window.geometry('500x300')  # set size
 
     banner = 'Convert Excel Data to LaTeX Source'
