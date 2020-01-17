@@ -18,6 +18,8 @@ def outputCSV():
     global file_path
     file_path = filedialog.askopenfilename()
     print(file_path)
+    if file_path == '':
+        return ''
     path, suffix = os.path.splitext(file_path)
     filesuffix = suffix.strip().lower()
     if filesuffix.lower() == '.csv':
@@ -52,6 +54,8 @@ def outputXLSX():
     global file_path
     file_path = filedialog.askopenfilename()
     print(file_path)
+    if file_path == '':
+        return ''
     path, suffix = os.path.splitext(file_path)
     filesuffix = suffix.strip().lower()
     if filesuffix.lower() == '.csv':
@@ -86,6 +90,8 @@ def outputXLS():
     global file_path
     file_path = filedialog.askopenfilename()
     print(file_path)
+    if file_path == '':
+        return ''
     path, suffix = os.path.splitext(file_path)
     filesuffix = suffix.strip().lower()
     if filesuffix.lower() == '.csv':
@@ -120,6 +126,8 @@ def outputTEX():
     global file_path
     file_path = filedialog.askopenfilename()
     print(file_path)
+    if file_path == '':
+        return ''
     path, suffix = os.path.splitext(file_path)
     filesuffix = suffix.strip().lower()
     if filesuffix.lower() == '.csv':
