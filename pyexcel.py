@@ -1,5 +1,5 @@
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-
 # read and write 2003 excel --> xls
 import xlrd
 import xlwt
@@ -61,6 +61,7 @@ def read07Excel(path):
 
 
 file_2003 = './2003.xls'
+
 file_2007 = './2007.xlsx'
 
 write03Excel(file_2003)

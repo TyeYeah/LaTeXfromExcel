@@ -1,4 +1,4 @@
-# !/user/bin/env Python3
+#!/usr/bin/python3
 # -*- coding:utf-8 -*-
 from writeTable import *
 from readTable import *
