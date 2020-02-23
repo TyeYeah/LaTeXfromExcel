@@ -7,18 +7,20 @@ All the.
 
 It's developed under Python3(3.7). Tkinter, xlrd, xlwt and openpyxl are needed.
 ## Structure
+```
 .
-
+├── console.py     
 ├── interface.py            
 ├── pyexcel.py              
 ├── README.md               
 ├── readTable.py            
-├── writeTable.py             
-└── requirements.txt           
+└── writeTable.py           
 
 0 directories, 5 files
+```
+console.py            --The console mode 
 
-interface.py            --The interface
+interface.py            --The gui mode
 
 pyexcel.py              --Used to produce '.xls' or '.xlsx' samples for test
 
@@ -29,12 +31,19 @@ writeTable.py           --Utils to output '.xls', '.xlsx' or '.csv' even 'LaTeX'
 ## Usage
 ### Run Source Code
 Make sure you are using Python3+
+
 Install the dependencies
-```py
-pip install -r requirements.txt 
+```sh
+pip install -r requirement.txt 
 ```
-Run the GUI
-```py
+Run the console mode
+```sh
+python console.py -i inputfile -o outputfile
+# or
+./console.py -i inputfile -o outputfile
+```
+Run the gui mode
+```sh
 python interface.py 
 ```
 ### Run Executable File

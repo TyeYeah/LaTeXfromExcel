@@ -40,10 +40,10 @@ def readCSV(path):
                                'tborder': 'No', 'bborder': 'No',
                                'lborder': 'No', 'rborder': 'No'}  # store a cell's data and format
                 rowcontent.append(cellcontent)
-            print(line)
+            #print(line)
             sheetcontent.append(rowcontent)
     content.append([sheetcontent, path, []])
-    print(content)
+    #print(content)
     return content
     pass
 
@@ -56,7 +56,7 @@ def read03xls(path):
     sheets = workbook.sheet_names()  # read sheets' names to 'sheets'
     content = []  # represents one csv file, to store data of one or more sheets
     for sheetname in sheets:  # read every single sheet
-        print('sheet: ', sheetname)
+        #print('sheet: ', sheetname)
         worksheet = workbook.sheet_by_name(sheetname)  # get sheet by sheetname
         sheetcontent = []  # represents one sheet, to store rows
         for i in range(0, worksheet.nrows):  # get each row
@@ -98,7 +98,7 @@ def read03xls(path):
                 # store a cell's data and format
                 rowcontent.append(cellcontent)
             sheetcontent.append(rowcontent)
-            print()
+            #print()
         # print(worksheet.merged_cells)
         merge = []  # store sheet's merged cells
         for m in worksheet.merged_cells:
@@ -108,7 +108,7 @@ def read03xls(path):
         content.append([sheetcontent, sheetname, merge])
     test = fmt.border.top_line_style
     # showDetail(test)
-    print(content)
+    #print(content)
     return content
 
 
@@ -120,7 +120,7 @@ def read07xlsx(path):
     content = []  # represents one csv file, to store data of one or more sheets
     for sheetname in sheetnames:  # read every single sheet
         sheet = workbook[sheetname]
-        print('sheet: ', sheetname)
+        #print('sheet: ', sheetname)
         sheetcontent = []  # represents one sheet, to store rows
         ii = jj = 1
         for row in sheet.rows:  # get each row
@@ -174,7 +174,7 @@ def read07xlsx(path):
         content.append([sheetcontent, sheetname, merge])
     test = cell.border.top
     # showDetail(test)
-    print(content)
+    #print(content)
     return content
 
 
@@ -197,6 +197,6 @@ if __name__ == '__main__':
     file_2003 = './2003.xls'
     file_2007 = './2007.xlsx'
 
-    read03xls(file_2003)
-    read07xlsx(file_2007)
+    # read03xls(file_2003)
+    # read07xlsx(file_2007)
     # readCSV('./cc.csv')

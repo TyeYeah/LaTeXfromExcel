@@ -84,7 +84,7 @@ def writeLaTeX(path, content):
     for sheets in content:
         sheetname = sheets[1]
         merge = sheets[2]
-        print('----------sheet:', sheetname, '----------')
+        #print('----------sheet:', sheetname, '----------')
         ii = jj = 0
         colnum = sheets[0][0].__len__()
         with open(path, 'a') as f:
@@ -256,7 +256,7 @@ def write03xls(path, content=[]):
     for sheets in content:
         sheetname = sheets[1]
         merge = sheets[2]
-        print(sheetname)
+        #print(sheetname)
         sheet = workbook.add_sheet(sheetname)
         ii = jj = 0
         for row in sheets[0]:
@@ -312,7 +312,7 @@ def write07xlsx(path, content=[]):
         sheet = workbook.active
         sheet.title = sheets[1]
         merge = sheets[2]
-        print(sheet.title)
+        #print(sheet.title)
 
         ii = jj = 1
         for row in sheets[0]:
@@ -343,7 +343,7 @@ def write07xlsx(path, content=[]):
         for mergeunit in merge:#merge cells at last
             mergeexp = (chr(mergeunit[0][1] + ord('A')) + str(mergeunit[0][0] + 1) + ':' + chr(
                 mergeunit[1][1] + ord('A')) + str(mergeunit[1][0] + 1))
-            print(mergeexp)
+            #print(mergeexp)
             sheet.merge_cells(mergeexp)
     workbook.save(path)
     pass
@@ -374,18 +374,8 @@ if __name__ == '__main__':
     write_file_2007 = './write_2007.xlsx'
 
     # write03xls(write_file_2003, read07xlsx(file_2007))
-    # styleee = xlwt.XFStyle()
-    # print(dir(styleee))
-    # patternnn = xlwt.Pattern()
-    # print(dir(patternnn))
-    # print(dir(styleee.font))  # bold, italic, height, name, underline
-    # print(dir(styleee.borders))  # top, bottom, left, right
-    # print(dir(styleee.alignment))  # vert, horz
 
     # write07xlsx(write_file_2007, read03xls(file_2003))
-    # cell = openpyxl.Workbook().active.cell(1, 1, 123456)
-    # print(cell.font)
-    # print(dir(cell))
-
+    
     # writeLaTeX('./test.tex', readCSV('./cc.csv'))
     # writeCSV('./ccc.csv',readCSV('./cc.csv'))
