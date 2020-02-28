@@ -10,6 +10,8 @@ def printUsage():
     helppage='''
     usage: console.py -i <input file> -o <output file>
            console.py --in=<input file> --out=<output file>
+           input file format: xls, xlsx, csv 
+           output file format: tex, xls, xlsx and csv
     '''
     print(helppage)
 

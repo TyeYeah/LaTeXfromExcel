@@ -39,8 +39,10 @@ pip install -r requirement.txt
 Run the console mode
 ```sh
 python console.py -i inputfile -o outputfile
+# e.g.
+python console.py -i input.xls -o output.tex # generate LaTeX source codes
 # or
-./console.py -i inputfile -o outputfile
+python console.py -i input.csv -o output.xlsx # do file format conversion
 ```
 Run the gui mode
 ```sh
