@@ -25,6 +25,7 @@ def mainconsole():
     for opt, arg in opts:
         if opt == '-h':
             printUsage()
+            sys.exit(-1)
         elif opt in ("-i", "--in"):
             inputarg = arg
         elif opt in ("-o", "--out"):
@@ -32,6 +33,7 @@ def mainconsole():
 
     if inputarg == '' or outputarg == '':
         print('Missing parameters')
+        printUsage()
         sys.exit(-1)
 
     path, suffix = os.path.splitext(inputarg)
