@@ -19,6 +19,19 @@ ReBorder07Dict = {'No': None, 'Solid': 'thin', 'Dotted': 'dotted', 'Dashed': 'da
 ReUnderline07Dit = {0: None, 1: 'single', None: None, 'single': 'single'}
 
 
+def writeEscapeChar(value):
+    new = ''
+    for i in value:
+        if i in ['#', '$', '%', '^', '&', '_', '{', '}', '~', '`']:
+            new += '\\'+ i
+        elif i == '\\':
+            new += '$\\backslash$'
+        else:
+            new += i
+    # print(new)
+    return new
+    pass
+
 # check the border value and return right output format
 def borderCheck(border):
     if border == 'No':
@@ -45,7 +58,7 @@ def boldPack(value, bold):
         return '\\textbf{' + value + '}'
     else:
         # print(bold)
-        return value
+        return str(value)
 
 
 # pack cell data according to italic value
@@ -55,7 +68,7 @@ def italicPack(value, italic):
         return '\\textit{' + value + '}'
     else:
         # print(italic)
-        return value
+        return str(value)
 
 
 # pack cell data according to underline value
@@ -64,8 +77,7 @@ def underlinePack(value, underline):
         # print('\\underline{' + value + '}')
         return '\\underline{' + value + '}'
     else:
-        # print(underline)
-        return value
+        return str(value)
 
 
 # common usage for packing normal cell:
@@ -86,7 +98,11 @@ def writeLaTeX(path, content):
         merge = sheets[2]
         #print('----------sheet:', sheetname, '----------')
         ii = jj = 0
-        colnum = sheets[0][0].__len__()
+        if sheets[0] == []:
+            continue
+        else:
+            colnum = sheets[0][0].__len__()
+
         with open(path, 'a') as f:
             f.write('\\begin{tabular}{' + 'c' * colnum + '}\n')  # write tabular head
             source+='\\begin{tabular}{' + 'c' * colnum + '}\n'
@@ -105,7 +121,7 @@ def writeLaTeX(path, content):
                         cellstr = ' \multicolumn{' + str(mergeunit[1][1] - mergeunit[0][1] + 1) + '}{' + borderCheck(
                             col.get('lborder')) + alignCheck(col.get('halign')) + borderCheck(
                             col.get('rborder')) + '}{' + underlinePack(
-                            boldPack(italicPack(col.get('value'), col.get('italic')), col.get('bold')),
+                            boldPack(italicPack(writeEscapeChar(col.get('value')), col.get('italic')), col.get('bold')),
                             col.get('underline')) + '} '
                         line += cellstr
 
@@ -121,7 +137,7 @@ def writeLaTeX(path, content):
                         if col.get('tborder') != 'No':
                             topborder.append(jj)
                         cellstr = ' \multirow{' + str(mergeunit[1][0] - mergeunit[0][0]) + '}{*}{' + underlinePack(
-                            boldPack(italicPack(col.get('value'), col.get('italic')), col.get('bold')),
+                            boldPack(italicPack(writeEscapeChar(col.get('value')), col.get('italic')), col.get('bold')),
                             col.get('underline')) + '} '
                         if (jj + 1) == row.__len__():
                             cellstr += ' '
@@ -139,7 +155,7 @@ def writeLaTeX(path, content):
                             col.get('lborder')) + alignCheck(col.get('halign')) + borderCheck(
                             col.get('rborder')) + '}{\multirow{' + str(
                             mergeunit[1][0] - mergeunit[0][0] + 1) + '}{*}{' + underlinePack(
-                            boldPack(italicPack(col.get('value'), col.get('italic')), col.get('bold')),
+                            boldPack(italicPack(writeEscapeChar(col.get('value')), col.get('italic')), col.get('bold')),
                             col.get('underline')) + '}} '
                         line += cellstr
                         break
@@ -204,7 +220,7 @@ def writeLaTeX(path, content):
                     cellstr = '\multicolumn{1}{' + borderCheck(
                         col.get('lborder')) + alignCheck(col.get('halign')) + borderCheck(
                         col.get('rborder')) + '}{' + underlinePack(
-                        boldPack(italicPack(col.get('value'), col.get('italic')), col.get('bold')),
+                        boldPack(italicPack(writeEscapeChar(col.get('value')), col.get('italic')), col.get('bold')),
                         col.get('underline')) + '}'
                     if (jj + 1) == row.__len__():
                         cellstr += ''
@@ -376,6 +392,5 @@ if __name__ == '__main__':
     # write03xls(write_file_2003, read07xlsx(file_2007))
 
     # write07xlsx(write_file_2007, read03xls(file_2003))
-    
-    # writeLaTeX('./test.tex', readCSV('./cc.csv'))
+
     # writeCSV('./ccc.csv',readCSV('./cc.csv'))

@@ -74,8 +74,8 @@ def read03xls(path):
                 italic = font.italic
                 underline = font.underlined
                 fontname = font.name
-                color = font.colour_index  # font color
-                bgx = fmt.background.pattern_colour_index  # background color
+                # color = font.colour_index  # font color
+                # bgx = fmt.background.pattern_colour_index  # background color
                 align = fmt.alignment  # get alignment object
                 valign = align.vert_align  # vertical alignment
                 halign = align.hor_align  # horizontal alignment
@@ -91,7 +91,7 @@ def read03xls(path):
                     cvalue == str(cell.value)
                 cellcontent = {'value': cvalue, 'size': size, 'bold': bold, 'italic': italic,
                                'underline': underline,
-                               'fontname': fontname, 'valign': VerticalAlignment03Dict.get(valign),
+                               'fontname': 'Arial', 'valign': VerticalAlignment03Dict.get(valign),
                                'halign': HorizontalAlignment03Dict.get(halign),
                                'tborder': Border03Dict.get(tborder), 'bborder': Border03Dict.get(bborder),
                                'lborder': Border03Dict.get(lborder), 'rborder': Border03Dict.get(rborder)}
@@ -135,8 +135,8 @@ def read07xlsx(path):
                 italic = cellfont.i
                 fontname = cellfont.name
                 underline = cellfont.underline
-                color = cellfont.color.rgb  # font color
-                bgx = cell.fill.fgColor.rgb  # background color
+                # color = cellfont.color.rgb  # font color
+                # bgx = cell.fill.fgColor.rgb  # background color
                 align = cell.alignment  # alignment object
                 valign = align.vertical  # vertical alignment
                 halign = align.horizontal  # horizontal alignment
@@ -152,7 +152,7 @@ def read07xlsx(path):
                     cvalue == str(cell.value)
                 cellcontent = {'value': cvalue, 'size': size, 'bold': bold, 'italic': italic,
                                'underline': underline,
-                               'fontname': fontname, 'valign': VerticalAlignment07Dict.get(valign),
+                               'fontname': 'Arial', 'valign': VerticalAlignment07Dict.get(valign),
                                'halign': HorizontalAlignment07Dict.get(halign),
                                'tborder': Border07Dict.get(tborder), 'bborder': Border07Dict.get(bborder),
                                'lborder': Border07Dict.get(lborder), 'rborder': Border07Dict.get(rborder)}
@@ -174,7 +174,7 @@ def read07xlsx(path):
         content.append([sheetcontent, sheetname, merge])
     test = cell.border.top
     # showDetail(test)
-    #print(content)
+    # print('\n',content)
     return content
 
 
