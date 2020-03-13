@@ -109,7 +109,7 @@ def outputXLS():
             messagebox.showerror('Something Wrong', 'Error occurred when opening xls')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-4] + '.xls')
-            print('read csv successfully')
+            print('read xls successfully')
     elif filesuffix.lower() == '.xlsx':
         try:
             write03xls(file_path[0:-5] + '.xls', read07xlsx(file_path))
@@ -117,7 +117,7 @@ def outputXLS():
             messagebox.showerror('Something Wrong', 'Error occurred when opening xlsx')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-5] + '.xls')
-            print('read csv successfully')
+            print('read xlsx successfully')
     else:
         messagebox.showerror('Something Wrong',
                              'Unsopported file suffix!\nOnly ".xls", ".xlsx", ".csv" are permitted')

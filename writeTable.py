@@ -20,6 +20,7 @@ ReUnderline07Dit = {0: None, 1: 'single', None: None, 'single': 'single'}
 
 
 def writeEscapeChar(value):
+    value = str(value)
     new = ''
     for i in value:
         if i in ['#', '$', '%', '^', '&', '_', '{', '}', '~', '`']:
