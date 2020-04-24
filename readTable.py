@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from datetime import date
 import xlrd
 import openpyxl
 
@@ -75,6 +76,7 @@ def read03xls(path):
                 underline = font.underlined
                 fontname = font.name
                 # color = font.colour_index  # font color
+                # print(font.colour_index)
                 # bgx = fmt.background.pattern_colour_index  # background color
                 align = fmt.alignment  # get alignment object
                 valign = align.vert_align  # vertical alignment
@@ -85,10 +87,7 @@ def read03xls(path):
                 tborder = border.top_line_style  # top border
                 bborder = border.bottom_line_style  # bottom border
                 cvalue = cell.value  # cell value
-                if cell.value == None:  # skip None cell( blank cell with nothing)
-                    cvalue = ''
-                else:
-                    cvalue == str(cell.value)
+                cvalue == str(cell.value)
                 cellcontent = {'value': cvalue, 'size': size, 'bold': bold, 'italic': italic,
                                'underline': underline,
                                'fontname': 'Arial', 'valign': VerticalAlignment03Dict.get(valign),
@@ -136,6 +135,7 @@ def read07xlsx(path):
                 fontname = cellfont.name
                 underline = cellfont.underline
                 # color = cellfont.color.rgb  # font color
+                # print(type(cellfont.color.rgb))
                 # bgx = cell.fill.fgColor.rgb  # background color
                 align = cell.alignment  # alignment object
                 valign = align.vertical  # vertical alignment
@@ -146,10 +146,7 @@ def read07xlsx(path):
                 tborder = border.top.style  # top border
                 bborder = border.bottom.style  # bottom border
                 cvalue = cell.value  # cell value
-                if cell.value == None:  # skip None cell( blank cell with nothing)
-                    cvalue = ''
-                else:
-                    cvalue == str(cell.value)
+                cvalue == str(cell.value)
                 cellcontent = {'value': cvalue, 'size': size, 'bold': bold, 'italic': italic,
                                'underline': underline,
                                'fontname': 'Arial', 'valign': VerticalAlignment07Dict.get(valign),
@@ -197,6 +194,6 @@ if __name__ == '__main__':
     file_2003 = './2003.xls'
     file_2007 = './2007.xlsx'
 
-    # read03xls(file_2003)
-    # read07xlsx(file_2007)
+    read03xls(file_2003)
+    read07xlsx(file_2007)
     # readCSV('./cc.csv')

@@ -89,11 +89,28 @@ def writeLaTeX(path, content):
     source = ''
     with open(path, 'w') as f:
         # write macro
-        f.write('\documentclass{ctexart}\n')
-        f.write('\\usepackage{multirow}\n')
-        f.write('\\begin{document}\n')
-        f.write('\\begin{table}[]\n')  # write table head
-    source+='\documentclass{ctexart}\n'+'\\usepackage{multirow}\n'+'\\begin{document}\n'+'\\begin{table}[]\n'
+        head = '''
+% You can add the following required packages to your document preamble:
+%\documentclass{ctexart}
+%\\usepackage{multirow}
+%\\usepackage{longtable}
+%\\begin{document}
+{
+% Add the following if the table is far too wide
+%\\tiny
+%\setlength{\\tabcolsep}{2pt}
+% Adjust margins ( reduce left margins )
+%\setlength\LTleft{-1in}
+%\setlength\LTright{-1in plus 1 fill}
+% Replace table with longtable if it's too long
+'''
+        f.write(head)
+        # f.write('\documentclass{ctexart}\n')
+        # f.write('\\usepackage{multirow}\n')
+        # f.write('\\usepackage{longtable}\n')
+        # f.write('\\begin{document}\n')
+        # f.write('%\\begin{table}[]\n')  # write table head
+    source += head
     for sheets in content:
         sheetname = sheets[1]
         merge = sheets[2]
@@ -137,9 +154,11 @@ def writeLaTeX(path, content):
                         flag = 2  # first cell of a merged cell with multiple row but one column
                         if col.get('tborder') != 'No':
                             topborder.append(jj)
-                        cellstr = ' \multirow{' + str(mergeunit[1][0] - mergeunit[0][0]) + '}{*}{' + underlinePack(
+                        cellstr = ' \multicolumn{1}{' + borderCheck(
+                            col.get('lborder')) + alignCheck(col.get('halign')) + borderCheck(
+                            col.get('rborder')) + '}{ \multirow{' + str(mergeunit[1][0] - mergeunit[0][0]) + '}{*}{' + underlinePack(
                             boldPack(italicPack(writeEscapeChar(col.get('value')), col.get('italic')), col.get('bold')),
-                            col.get('underline')) + '} '
+                            col.get('underline')) + '} }'
                         if (jj + 1) == row.__len__():
                             cellstr += ' '
                         else:
@@ -168,7 +187,7 @@ def writeLaTeX(path, content):
                             topborder.append(jj)
                         if col.get('bborder') != 'No':
                             bottomborder.append(jj)
-                        if jj == mergeunit[1][1]:
+                        if jj == mergeunit[1][1] and jj+1 < colnum:
                             cellstr = ' &'
                         else:
                             cellstr = ' '
@@ -181,6 +200,13 @@ def writeLaTeX(path, content):
                         if ii == mergeunit[1][0] and sheets[0][mergeunit[0][0]][mergeunit[0][1]].get('bborder') != 'No':
                             bottomborder.append(jj)
                             pass
+                        if sheets[0][mergeunit[0][0]][mergeunit[0][1]].get('lborder') != 'No' or sheets[0][mergeunit[0][0]][mergeunit[0][1]].get('rborder') != 'No':
+                            lb = sheets[0][mergeunit[0][0]][mergeunit[0][1]].get('lborder')
+                            rb = sheets[0][mergeunit[0][0]][mergeunit[0][1]].get('rborder')
+                            ha = sheets[0][mergeunit[0][0]][mergeunit[0][1]].get('halign')
+                            line+= ' \multicolumn{1}{' + borderCheck(
+                            lb) + alignCheck(ha) + borderCheck(
+                            rb) + '}{} '
                         if (jj + 1) == row.__len__():
                             cellstr = ' '
                         else:
@@ -209,7 +235,7 @@ def writeLaTeX(path, content):
                             pass
                         if ii == mergeunit[1][0] and sheets[0][mergeunit[0][0]][mergeunit[0][1]].get('bborder') != 'No':
                             bottomborder.append(jj)
-                        if jj == mergeunit[1][1]:
+                        if jj == mergeunit[1][1] and jj + 1 < colnum:
                             cellstr = ' &'
                         else:
                             cellstr = ' '
@@ -255,9 +281,8 @@ def writeLaTeX(path, content):
             f.write('\end{tabular}\n')
         source+='\end{tabular}\n'
     with open(path, 'a') as f:
-        f.write('\end{table}\n')
-        f.write('\end{document}\n')
-    source+='\end{table}\n'+'\end{document}\n'
+        f.write('%\end{document}\n')
+    source+='%\end{document}\n'
     return source
     pass
 
@@ -389,7 +414,7 @@ if __name__ == '__main__':
     file_2007 = './2007.xlsx'
     write_file_2003 = './write_2003.xls'
     write_file_2007 = './write_2007.xlsx'
-
+    writeLaTeX('/root/Desktop/main2.tex',read03xls('/root/Desktop/2016级本科生毕业论文（设计）题目汇总表.xls'))
     # write03xls(write_file_2003, read07xlsx(file_2007))
 
     # write07xlsx(write_file_2007, read03xls(file_2003))
