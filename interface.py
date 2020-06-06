@@ -29,7 +29,7 @@ def outputCSV():
             messagebox.showerror('Something Wrong', 'Error occurred when opening csv')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-4] + '.csv')
-            print('read csv successfully')
+            print('write csv successfully')
     elif filesuffix.lower() == '.xls':
         try:
             writeCSV(file_path[0:-4] + '.csv', read03xls(file_path))
@@ -37,7 +37,7 @@ def outputCSV():
             messagebox.showerror('Something Wrong', 'Error occurred when opening xls')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-4] + '.csv')
-            print('read csv successfully')
+            print('write csv successfully')
     elif filesuffix.lower() == '.xlsx':
         try:
             writeCSV(file_path[0:-5] + '.csv', read07xlsx(file_path))
@@ -45,7 +45,7 @@ def outputCSV():
             messagebox.showerror('Something Wrong', 'Error occurred when opening xlsx')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-5] + '.csv')
-            print('read csv successfully')
+            print('write csv successfully')
     else:
         messagebox.showerror('Something Wrong',
                              'Unsopported file suffix!\nOnly ".xls", ".xlsx", ".csv" are permitted')
@@ -65,7 +65,7 @@ def outputXLSX():
             messagebox.showerror('Something Wrong', 'Error occurred when opening csv')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-4] + '.xlsx')
-            print('read csv successfully')
+            print('write xlsx successfully')
     elif filesuffix.lower() == '.xls':
         try:
             write07xlsx(file_path[0:-4] + '.xlsx', read03xls(file_path))
@@ -73,7 +73,7 @@ def outputXLSX():
             messagebox.showerror('Something Wrong', 'Error occurred when opening xls')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-4] + '.xlsx')
-            print('read csv successfully')
+            print('write xlsx successfully')
     elif filesuffix.lower() == '.xlsx':
         try:
             write07xlsx(file_path[0:-5] + '.xlsx', read07xlsx(file_path))
@@ -81,7 +81,7 @@ def outputXLSX():
             messagebox.showerror('Something Wrong', 'Error occurred when opening xlsx')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-5] + '.xlsx')
-            print('read csv successfully')
+            print('write xlsx successfully')
     else:
         messagebox.showerror('Something Wrong',
                              'Unsopported file suffix!\nOnly ".xls", ".xlsx", ".csv" are permitted')
@@ -101,7 +101,7 @@ def outputXLS():
             messagebox.showerror('Something Wrong', 'Error occurred when opening csv')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-4] + '.xls')
-            print('read csv successfully')
+            print('write xls successfully')
     elif filesuffix.lower() == '.xls':
         try:
             write03xls(file_path[0:-4] + '.xls', read03xls(file_path))
@@ -109,7 +109,7 @@ def outputXLS():
             messagebox.showerror('Something Wrong', 'Error occurred when opening xls')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-4] + '.xls')
-            print('read xls successfully')
+            print('write xls successfully')
     elif filesuffix.lower() == '.xlsx':
         try:
             write03xls(file_path[0:-5] + '.xls', read07xlsx(file_path))
@@ -117,7 +117,7 @@ def outputXLS():
             messagebox.showerror('Something Wrong', 'Error occurred when opening xlsx')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-5] + '.xls')
-            print('read xlsx successfully')
+            print('write xls successfully')
     else:
         messagebox.showerror('Something Wrong',
                              'Unsopported file suffix!\nOnly ".xls", ".xlsx", ".csv" are permitted')
@@ -137,7 +137,7 @@ def outputTEX():
             messagebox.showerror('Something Wrong', 'Error occurred when opening csv')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-4] + '.tex')
-            print('read csv successfully')
+            print('write tex successfully')
     elif filesuffix.lower() == '.xls':
         try:
             writeLaTeX(file_path[0:-4] + '.tex', read03xls(file_path))
@@ -145,7 +145,7 @@ def outputTEX():
             messagebox.showerror('Something Wrong', 'Error occurred when opening xls')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-4] + '.tex')
-            print('read csv successfully')
+            print('write tex successfully')
     elif filesuffix.lower() == '.xlsx':
         try:
             writeLaTeX(file_path[0:-5] + '.tex', read07xlsx(file_path))
@@ -153,7 +153,7 @@ def outputTEX():
             messagebox.showerror('Something Wrong', 'Error occurred when opening xlsx')
         else:
             messagebox.showinfo('Info', 'Successfully converted!\nFile saved in \n' + file_path[0:-5] + '.tex')
-            print('read csv successfully')
+            print('write tex successfully')
     else:
         messagebox.showerror('Something Wrong',
                              'Unsopported file suffix!\nOnly ".xls", ".xlsx", ".csv" are permitted')
@@ -235,7 +235,7 @@ def mainwindow():
                     text1.delete('1.0', tk.END)
                     text1.insert('insert', 'Error occurred when opening xls')
                 else:
-                    print('read csv successfully')
+                    print('read xls successfully')
             elif filesuffix.lower() == '.xlsx':
                 try:
                     text1.delete('1.0', tk.END)
@@ -244,7 +244,7 @@ def mainwindow():
                     text1.delete('1.0', tk.END)
                     text1.insert('insert', 'Error occurred when opening xlsx')
                 else:
-                    print('read csv successfully')
+                    print('read xlsx successfully')
             else:
                 text1.delete('1.0', tk.END)
                 text1.insert('insert',

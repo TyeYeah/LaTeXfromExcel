@@ -44,7 +44,7 @@ def borderCheck(border):
 
 # check the alignment and return right output format
 def alignCheck(align):
-    if align == 'Left':
+    if align == 'Left' or align == 'Default' or align == 'Justified':
         return 'l'
     elif align == 'Right':
         return 'r'
@@ -95,10 +95,11 @@ def writeLaTeX(path, content):
 %\\usepackage{multirow}
 %\\usepackage{longtable}
 %\\begin{document}
-{
+\\begin{table}[]
 % Add the following if the table is far too wide
 %\\tiny
 %\setlength{\\tabcolsep}{2pt}
+
 % Adjust margins ( reduce left margins )
 %\setlength\LTleft{-1in}
 %\setlength\LTright{-1in plus 1 fill}
@@ -279,7 +280,9 @@ def writeLaTeX(path, content):
             ii += 1
         with open(path, 'a') as f:
             f.write('\end{tabular}\n')
+            f.write('\end{table}\n')
         source+='\end{tabular}\n'
+        source+='\end{table}\n'
     with open(path, 'a') as f:
         f.write('%\end{document}\n')
     source+='%\end{document}\n'

@@ -88,6 +88,8 @@ def read03xls(path):
                 bborder = border.bottom_line_style  # bottom border
                 cvalue = cell.value  # cell value
                 cvalue == str(cell.value)
+                if cvalue is None:
+                    cvalue = ''
                 cellcontent = {'value': cvalue, 'size': size, 'bold': bold, 'italic': italic,
                                'underline': underline,
                                'fontname': 'Arial', 'valign': VerticalAlignment03Dict.get(valign),
@@ -147,6 +149,8 @@ def read07xlsx(path):
                 bborder = border.bottom.style  # bottom border
                 cvalue = cell.value  # cell value
                 cvalue == str(cell.value)
+                if cvalue is None:
+                    cvalue = ''
                 cellcontent = {'value': cvalue, 'size': size, 'bold': bold, 'italic': italic,
                                'underline': underline,
                                'fontname': 'Arial', 'valign': VerticalAlignment07Dict.get(valign),
