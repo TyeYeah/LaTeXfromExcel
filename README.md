@@ -49,7 +49,7 @@ Run the gui mode
 python interface.py 
 ```
 ### Run Executable File
-Get executable file at [this link](https://github.com/TyeYeah/LaTeXfromExcel/releases) according to your platform.
+Get executable files at [this link](https://github.com/TyeYeah/LaTeXfromExcel/releases) according to your platform. They are sometimes buggy because they're not built from the latest source codes. 
 ## Feature
 Now I developed two modules: 
 1. File Format Conversion
