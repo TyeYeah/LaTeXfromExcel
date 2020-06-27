@@ -132,7 +132,7 @@ def outputTEX():
     filesuffix = suffix.strip().lower()
     if filesuffix.lower() == '.csv':
         try:
-            writeLaTeX(file_path[0:-4] + '.tex', readCSV(file_path))
+            writeLaTeX(file_path[0:-4] + '.tex', readCSV(file_path), 1)
         except Exception as e:
             messagebox.showerror('Something Wrong', 'Error occurred when opening csv')
         else:
@@ -140,7 +140,7 @@ def outputTEX():
             print('write tex successfully')
     elif filesuffix.lower() == '.xls':
         try:
-            writeLaTeX(file_path[0:-4] + '.tex', read03xls(file_path))
+            writeLaTeX(file_path[0:-4] + '.tex', read03xls(file_path), 1)
         except Exception as e:
             messagebox.showerror('Something Wrong', 'Error occurred when opening xls')
         else:
@@ -148,7 +148,7 @@ def outputTEX():
             print('write tex successfully')
     elif filesuffix.lower() == '.xlsx':
         try:
-            writeLaTeX(file_path[0:-5] + '.tex', read07xlsx(file_path))
+            writeLaTeX(file_path[0:-5] + '.tex', read07xlsx(file_path), 1)
         except Exception as e:
             messagebox.showerror('Something Wrong', 'Error occurred when opening xlsx')
         else:

@@ -97,7 +97,7 @@ def mainconsole():
             print('write xlsx successfully')
     elif ofilesuffix.lower() == '.tex':
         try:
-            writeLaTeX(outputarg[0:-4] + '.tex', content)
+            writeLaTeX(outputarg[0:-4] + '.tex', content,0)
         except Exception as e:
             print('Error occurred when saving tex')
             sys.exit(-1)

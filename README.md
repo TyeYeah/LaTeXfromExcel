@@ -1,8 +1,8 @@
 # LaTeXfromExcel
 ## Intro
-Writing LaTeX to do paper typesetting seems not a good deal, but hard for normal paper writers.
+Writing LaTeX to do paper typesetting seems a bit hard for normal paper writers.
 
-This progect helps to convert Excel data to LaTeX source code, to reduce work load of table writers.
+This project helps to convert Excel data to LaTeX source code, to reduce work load of table writers.
 All the.
 
 It's developed under Python3(3.7). Tkinter, xlrd, xlwt and openpyxl are needed.
@@ -30,7 +30,7 @@ writeTable.py           --Utils to output '.xls', '.xlsx' or '.csv' even 'LaTeX'
 
 ## Usage
 ### Run Source Code
-Make sure you are using Python3+
+Make sure you are using Python3.7+
 
 Install the dependencies
 ```sh
@@ -52,9 +52,11 @@ python interface.py
 Get executable files at [this link](https://github.com/TyeYeah/LaTeXfromExcel/releases) according to your platform. They are sometimes buggy because they're not built from the latest source codes. 
 ## Feature
 Now I developed two modules: 
-1. File Format Conversion
-2. Output LaTeX Source
+1. File Format Conversion:  to get compilable *.tex files.
+2. Output LaTeX Source:     to get LaTeX source codes.
 
 If you want to get LaTeX format data table on a laptop without office suites and LaTeX compilation engine, this project helps to: 
 * do simple file format conversion(No color supports)
 * produce Table's LaTeX source code.
+
+Remember to config `UTF-8` everywhere, for the case that your os using `GBK` or other encoding, or characters compiled are garbled.

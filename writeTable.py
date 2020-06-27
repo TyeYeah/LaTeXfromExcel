@@ -24,7 +24,7 @@ def writeEscapeChar(value):
     new = ''
     for i in value:
         if i in ['#', '$', '%', '^', '&', '_', '{', '}', '~', '`']:
-            new += '\\'+ i
+            new += '\\' + i
         elif i == '\\':
             new += '$\\backslash$'
         else:
@@ -32,6 +32,7 @@ def writeEscapeChar(value):
     # print(new)
     return new
     pass
+
 
 # check the border value and return right output format
 def borderCheck(border):
@@ -80,22 +81,23 @@ def underlinePack(value, underline):
     else:
         return str(value)
 
-
 # common usage for packing normal cell:
 # underlinePack(boldPack(italicPack(col.get('value'),col.get('italic')),col.get('bold')),col.get('underline'))
 
+
 # write LaTeX source to 'path', from 'content', which comes from my own data format
-def writeLaTeX(path, content):
+def writeLaTeX(path, content, file=0):
     source = ''
     with open(path, 'w') as f:
         # write macro
-        head = '''
+        head0 = '''
 % You can add the following required packages to your document preamble:
 %\documentclass{ctexart}
 %\\usepackage{multirow}
 %\\usepackage{longtable}
 %\\begin{document}
 \\begin{table}[]
+
 % Add the following if the table is far too wide
 %\\tiny
 %\setlength{\\tabcolsep}{2pt}
@@ -104,14 +106,31 @@ def writeLaTeX(path, content):
 %\setlength\LTleft{-1in}
 %\setlength\LTright{-1in plus 1 fill}
 % Replace table with longtable if it's too long
+
 '''
-        f.write(head)
-        # f.write('\documentclass{ctexart}\n')
-        # f.write('\\usepackage{multirow}\n')
-        # f.write('\\usepackage{longtable}\n')
-        # f.write('\\begin{document}\n')
-        # f.write('%\\begin{table}[]\n')  # write table head
-    source += head
+        head1 = '''
+\documentclass{ctexart}
+\\usepackage{multirow}
+\\usepackage{longtable}
+\\begin{document}
+\\begin{table}[]
+
+% Add the following if the table is far too wide
+%\\tiny
+%\setlength{\\tabcolsep}{2pt}
+
+% Adjust margins ( reduce left margins )
+%\setlength\LTleft{-1in}
+%\setlength\LTright{-1in plus 1 fill}
+% Replace table with longtable if it's too long
+
+'''
+        if file == 0:
+            f.write(head0)
+            source += head0
+        else: # file == 1
+            f.write(head1)
+            source += head1
     for sheets in content:
         sheetname = sheets[1]
         merge = sheets[2]
@@ -284,8 +303,12 @@ def writeLaTeX(path, content):
         source+='\end{tabular}\n'
         source+='\end{table}\n'
     with open(path, 'a') as f:
-        f.write('%\end{document}\n')
-    source+='%\end{document}\n'
+        if file == 0:
+            f.write('%\end{document}\n')
+            source+='%\end{document}\n'
+        else: #file == 1
+            f.write('\end{document}\n')
+            source += '\end{document}\n'
     return source
     pass
 
@@ -417,9 +440,7 @@ if __name__ == '__main__':
     file_2007 = './2007.xlsx'
     write_file_2003 = './write_2003.xls'
     write_file_2007 = './write_2007.xlsx'
-    writeLaTeX('/root/Desktop/main2.tex',read03xls('/root/Desktop/2016级本科生毕业论文（设计）题目汇总表.xls'))
     # write03xls(write_file_2003, read07xlsx(file_2007))
-
     # write07xlsx(write_file_2007, read03xls(file_2003))
-
     # writeCSV('./ccc.csv',readCSV('./cc.csv'))
+    writeLaTeX('./textest/write_2003.tex', read03xls(file_2003),1)
